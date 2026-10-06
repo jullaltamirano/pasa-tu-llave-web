@@ -404,7 +404,7 @@ export default function ComingSoon() {
 
         {/* Date */}
         <p className="mt-12 text-[10px] uppercase tracking-[0.35em] text-white/30">
-          15 · OCTUBRE · 2026
+          16 · OCTUBRE · 2026
         </p>
       </section>
     </main>
