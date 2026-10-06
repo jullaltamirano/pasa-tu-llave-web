@@ -245,40 +245,60 @@ type TimeLeft = {
   seconds: number;
 };
 
-const TARGET_DATE = new Date("2026-10-16T00:00:00-05:00").getTime();
+// 16 de octubre de 2026 a las 00:00:00
+// Hora de Perú (UTC-5)
+const TARGET_DATE = new Date(
+  "2026-10-16T00:00:00-05:00"
+).getTime();
+
+const INITIAL_TIME: TimeLeft = {
+  days: 0,
+  hours: 0,
+  minutes: 0,
+  seconds: 0,
+};
 
 function calculateTimeLeft(): TimeLeft {
-  const difference = Math.max(TARGET_DATE - Date.now(), 0);
+  const difference = Math.max(
+    TARGET_DATE - Date.now(),
+    0
+  );
 
   return {
-    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+    days: Math.floor(
+      difference / (1000 * 60 * 60 * 24)
+    ),
+
     hours: Math.floor(
       (difference / (1000 * 60 * 60)) % 24
     ),
+
     minutes: Math.floor(
       (difference / (1000 * 60)) % 60
     ),
+
     seconds: Math.floor(
       (difference / 1000) % 60
     ),
   };
 }
 
-function formatNumber(value: number) {
+function formatNumber(value: number): string {
   return value.toString().padStart(2, "0");
 }
 
 export default function ComingSoon() {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(
-    calculateTimeLeft()
-  );
+  const [timeLeft, setTimeLeft] =
+    useState<TimeLeft>(INITIAL_TIME);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(timer);
+    };
   }, []);
 
   const counterItems = [
@@ -302,7 +322,7 @@ export default function ComingSoon() {
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#061321] text-white">
-      {/* Background image */}
+      {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
@@ -313,19 +333,21 @@ export default function ComingSoon() {
       {/* Navy overlay */}
       <div className="absolute inset-0 bg-[#061321]/80" />
 
-      {/* Blur + dark gradient */}
+      {/* Blur */}
       <div className="absolute inset-0 backdrop-blur-[3px]" />
 
+      {/* Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#061321]/50 via-[#061321]/70 to-[#020812]/95" />
 
       {/* Content */}
       <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-12 text-center">
+
         {/* Small heading */}
         <p className="mb-4 text-xs font-medium tracking-[0.55em] text-[#D6A354] sm:text-sm">
           PRÓXIMAMENTE
         </p>
 
-        {/* Main title */}
+        {/* Title */}
         <h1 className="text-4xl font-light tracking-[0.18em] text-[#D6A354] sm:text-6xl md:text-7xl">
           EN CONSTRUCCIÓN
         </h1>
@@ -333,7 +355,7 @@ export default function ComingSoon() {
         {/* Divider */}
         <div className="my-8 h-[1px] w-20 bg-[#D6A354] sm:w-32" />
 
-        {/* Subtitle */}
+        {/* Description */}
         <p className="mb-10 max-w-md text-sm font-light leading-relaxed tracking-wide text-white/70 sm:text-base">
           Estamos preparando algo especial.
           <br />
@@ -366,10 +388,10 @@ export default function ComingSoon() {
                 sm:min-h-[155px]
               "
             >
-              {/* Top gold line */}
+              {/* Gold top line */}
               <div className="absolute left-1/2 top-0 h-[1px] w-1/3 -translate-x-1/2 bg-[#D6A354]" />
 
-              <span className="font-light tabular-nums text-[#D6A354] text-4xl sm:text-5xl md:text-6xl">
+              <span className="text-4xl font-light tabular-nums text-[#D6A354] sm:text-5xl md:text-6xl">
                 {formatNumber(item.value)}
               </span>
 
@@ -380,9 +402,9 @@ export default function ComingSoon() {
           ))}
         </div>
 
-        {/* Bottom text */}
+        {/* Date */}
         <p className="mt-12 text-[10px] uppercase tracking-[0.35em] text-white/30">
-          16 · OCTUBRE · 2026
+          15 · OCTUBRE · 2026
         </p>
       </section>
     </main>
