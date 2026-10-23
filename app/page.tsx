@@ -9,8 +9,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { VehicleCard } from "@/components/Home/vehicle-card";
-import { api } from "@/lib/api-client";
-import { IndexVehicle } from "@/types";
+import { getHotSales } from "@/lib/services/hot-sales.service";
 
 export const metadata = {
   title: "PasaTuLlave | Comprar autos de segunda en Lima",
@@ -38,10 +37,7 @@ const benefits = [
 export default async function Page() {
   "use cache"
 
-  const hotVehicles = await api<IndexVehicle[]>({
-    route: "/api/car-listing/hot-sales",
-    method: "GET",
-  });
+  const hotVehicles = await getHotSales()
 
   return (
     <main className="bg-[#f7f8f6] text-[#0B2B45]">
