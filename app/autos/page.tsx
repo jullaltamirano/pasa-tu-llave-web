@@ -9,7 +9,7 @@ import {
   SlidersHorizontal,
 } from "lucide-react";
 import { Footer, SiteHeader } from "@/components/site-header";
-import { VehicleCard, type Vehicle } from "@/components/vehicle-card";
+import { VehicleCard, type Vehicle } from "@/components/Home/vehicle-card";
 
 const vehicles: Vehicle[] = [
   {

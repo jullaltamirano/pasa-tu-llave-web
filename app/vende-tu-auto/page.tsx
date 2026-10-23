@@ -9,7 +9,7 @@ import {
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
-import { Footer, SiteHeader } from "@/components/site-header";
+import { FormComponent } from "@/components/PageComponents/Vende-tu-auto/FormComponent";
 
 export const metadata = {
   title: "Vender mi auto en Lima | PasaTuLlave",
@@ -44,8 +44,7 @@ export default function SellPage() {
           className="object-cover opacity-35"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B2B45] via-[#0B2B45]/90 to-[#0B2B45]/25" />
-        <SiteHeader />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B2B45] via-[#0B2B45]/40 to-[#0B2B45]/20" />
         <div className="relative mx-auto flex min-h-[620px] max-w-7xl items-center px-5 pt-24 lg:px-8">
           <div className="max-w-2xl">
             <Link
@@ -57,17 +56,16 @@ export default function SellPage() {
             <div className="mb-5 flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#D4A72C]">
               <Sparkles className="size-4" /> La venta inteligente
             </div>
-            <h1 className="text-5xl font-black leading-[0.98] tracking-[-0.06em]">
+            <h1 className="text-5xl font-black leading-[0.98] tracking-[-0.06em] uppercase">
               Vender tu auto en Lima puede ser{" "}
               <span className="text-[#D4A72C]">simple.</span>
             </h1>
             <p className="mt-7 max-w-lg text-lg leading-8 text-white/75">
-              Véndelo con una plataforma que entiende su valor, lo presenta
-              mejor y lo conecta con compradores reales.
+              Véndelo en una plataforma que entiende su valor, lo presenta mejor y lo conecta con compradores reales.
             </p>
             <Link
               href="#formulario"
-              className="mt-9 inline-flex items-center gap-2 rounded-full bg-[#D4A72C] px-7 py-4 font-bold text-[#0B2B45] hover:scale-[1.02]"
+              className="uppercase mt-9 inline-flex items-center gap-2 rounded-full bg-[#D4A72C] px-7 py-4 font-bold text-[#0B2B45] hover:scale-[1.02]"
             >
               Quiero vender mi auto <ArrowRight className="size-4" />
             </Link>
@@ -77,16 +75,13 @@ export default function SellPage() {
       <section className="mx-auto grid max-w-7xl gap-10 px-5 py-20 lg:grid-cols-[1fr_0.8fr] lg:items-center lg:px-8">
         <div>
           <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#D4A72C]">
-            Venta de auto en Lima
+            Venta de autos en Lima
           </p>
           <h2 className="text-4xl font-black tracking-[-0.05em]">
             La mejor presentación para tu auto.
           </h2>
           <p className="mt-5 max-w-xl text-base leading-8 text-[#63717b]">
-            Si buscas vender tu auto en Lima sin perder tiempo negociando con
-            desconocidos, PasaTuLlave te acompaña desde la inspección hasta el
-            cierre. Publicamos información transparente, validamos el vehículo y
-            mostramos sus mejores atributos con contenido profesional.
+            Si buscas vender tu auto sin perder tiempo negociando con desconocidos, nosotros te acompañamos desde la inspección hasta el cierre. Publicamos información transparente, validamos el vehículo y mostramos sus mejores atributos con contenido profesional.
           </p>
         </div>
         <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
@@ -102,10 +97,10 @@ export default function SellPage() {
       <section className="mx-auto max-w-7xl px-5 pb-20 lg:px-8">
         <div className="mb-12 max-w-xl">
           <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#D4A72C]">
-            Por qué PasaTuLlave
+            ¿Por qué vender con nosotros?
           </p>
           <h2 className="text-4xl font-black tracking-[-0.05em]">
-            Vender puede ser una buena experiencia.
+            Queremos que vender tu auto sea una buena experiencia para ti
           </h2>
         </div>
         <div className="grid gap-5 md:grid-cols-3">
@@ -159,44 +154,9 @@ export default function SellPage() {
               </span>
             </div>
           </div>
-          <form className="rounded-2xl bg-white p-6 text-[#0B2B45] shadow-2xl sm:p-8">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <label className="flex flex-col gap-2 text-sm font-bold">
-                Nombre
-                <input
-                  required
-                  className="rounded-lg border border-[#0B2B45]/15 px-4 py-3 font-normal outline-none focus:border-[#D4A72C]"
-                  placeholder="Tu nombre"
-                />
-              </label>
-              <label className="flex flex-col gap-2 text-sm font-bold">
-                Teléfono
-                <input
-                  required
-                  type="tel"
-                  className="rounded-lg border border-[#0B2B45]/15 px-4 py-3 font-normal outline-none focus:border-[#D4A72C]"
-                  placeholder="999 123 456"
-                />
-              </label>
-            </div>
-            <label className="mt-4 flex flex-col gap-2 text-sm font-bold">
-              Marca y modelo
-              <input
-                required
-                className="rounded-lg border border-[#0B2B45]/15 px-4 py-3 font-normal outline-none focus:border-[#D4A72C]"
-                placeholder="Ej. Mazda CX-5 2021"
-              />
-            </label>
-            <button
-              type="submit"
-              className="mt-5 flex w-full items-center justify-center gap-2 rounded-lg bg-[#D4A72C] px-5 py-3.5 font-black text-[#0B2B45] hover:bg-[#e2b83e]"
-            >
-              Solicitar inspección gratuita <ArrowRight className="size-4" />
-            </button>
-          </form>
+          <FormComponent />
         </div>
       </section>
-      <Footer />
     </main>
   );
 }

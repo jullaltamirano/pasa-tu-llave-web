@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import { Footer, SiteHeader } from '@/components/site-header'
 
 export const metadata: Metadata = {
   title: 'PasaTuLlave | Compra y vende autos con confianza',
@@ -37,7 +38,9 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className="antialiased">
+        <SiteHeader />
         {children}
+        <Footer />
       </body>
     </html>
   )
