@@ -9,9 +9,9 @@ import {
   SlidersHorizontal,
 } from "lucide-react";
 import { Footer, SiteHeader } from "@/components/site-header";
-import { VehicleCard, type Vehicle } from "@/components/Home/vehicle-card";
+import { VehicleCard } from "@/components/Home/vehicle-card";
 
-const vehicles: Vehicle[] = [
+const vehicles: unknown[] = [
   {
     name: "Toyota Corolla XLE",
     year: "2022",
@@ -75,29 +75,10 @@ export default function AutosPage() {
   const [brand, setBrand] = useState("Todas");
   const [maxPrice, setMaxPrice] = useState("");
   const [sort, setSort] = useState("recomendados");
-  const brands = [
-    "Todas",
-    ...Array.from(new Set(vehicles.map((v) => v.name.split(" ")[0]))),
-  ];
-  const filtered = useMemo(() => {
-    const result = vehicles.filter(
-      (v) =>
-        v.name.toLowerCase().includes(query.toLowerCase()) &&
-        (brand === "Todas" || v.name.startsWith(brand)) &&
-        (!maxPrice || price(v.price) <= Number(maxPrice)),
-    );
-    return [...result].sort((a, b) =>
-      sort === "menor-precio"
-        ? price(a.price) - price(b.price)
-        : sort === "menor-km"
-          ? Number(a.km.replace(/[^0-9]/g, "")) -
-            Number(b.km.replace(/[^0-9]/g, ""))
-          : 0,
-    );
-  }, [query, brand, maxPrice, sort]);
+  
   return (
     <main className="min-h-screen bg-[#f7f8f6] text-[#0B2B45]">
-      <div className="relative bg-[#0B2B45] text-white">
+      {/* <div className="relative bg-[#0B2B45] text-white">
         <SiteHeader />
         <div className="mx-auto max-w-7xl px-5 pb-14 pt-32 lg:px-8">
           <Link
@@ -194,8 +175,7 @@ export default function AutosPage() {
             </button>
           </div>
         )}
-      </section>
-      <Footer />
+      </section> */}
     </main>
   );
 }
