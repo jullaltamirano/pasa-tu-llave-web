@@ -93,11 +93,11 @@ export const FormComponent = () => {
       const body = {
          sender: {
             name: 'PasaTuLlave - Contact Form',
-            email: 'ventas@pasatullave.com',
+            email: 'pasatullave@gmail.com',
          },
          to: [
             {
-               email: 'ventas@pasatullave.com',
+               email: 'pasatullave@gmail.com',
                name: 'PasaTuLlave',
             },
          ],
